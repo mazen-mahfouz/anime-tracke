@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/import-all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <title>Anime-Tracke</title>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>Animes Tracker</h1>
+            <div>
+                <input type="text" placeholder="search for an anime..." @keyup.enter="get_result()"
+                    v-model="search_value">
+                <button @click.left="get_result()">Search</button>
+            </div>
+        </header>
+
+        <div id="search-results">
+            <h1>Results</h1>
+            <div class="not-found" v-show="!load.load_icon && my_search.length == 0">
+                <h1>Not Found Results</h1>
+            </div>
+            <div id="load" v-on:move_page v-if="load.load_icon && load.respons" :class="{active : load.load_icon}">
+                <span></span>
+            </div>
+            <div id="contain_items" :class="{active : load.active_contain_search}">
+                <my-result-search v-for="item in my_search" v-on:clicked_fav="newfavourit" :item="item"
+                    :title="item.title" :about="item.synopsis" :img="item.images.jpg.image_url"></my-result-search>
+            </div>
+            <div id="toggle_page" v-if="my_search.length !== 0">
+                <button v-show="count_page !== 1" @click.left="move_page(-1)">Back</button>
+                <button v-show="count_page !== all_count_pages" @click.left="move_page(1)">Next</button>
+            </div>
+        </div>
+
+        <div id="favourit-results">
+            <h1>My wishlist</h1>
+            <div class="not-found" v-show="my_favourit.length == 0">
+                <h1>Not Found Favourit</h1>
+            </div>
+            <my-result-favourit v-for="item, index in my_favourit" v-on:delet_item="my_favourit.splice(index,1)"
+                :episodes_count.sync="item[1].episodes_count" :title="item[0].title" :img="item[0].images.jpg.image_url"
+                :episodes="item[0].episodes" :episodes_count="item[1].episodes_count" :index="index"
+                :allfavourit="my_favourit"></my-result-favourit>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Anime tracker</strong> by Mazen Mahfouz. This app was built with Vue.js .© 2022</p>
+    </footer>
+    <script src="js/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

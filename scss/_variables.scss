@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --them-color: ;
+    --padding-nav: 5%;
+}
+
+@mixin img-pos($name) {
+    background: url(img/#{$name});
+    background-repeat: no-repeat;
+    background-position: unset;
+    background-size: cover;
+}
+
+@mixin before-after() {
+    content: "";
+    position: absolute;
+}
+
+@mixin pos($typy, $top, $left) {
+    position: $typy;
+    top: $top;
+    left: $left;
+}
+
+@mixin display($typy, $top, $left) {
+    display: $typy;
+    justify-items: $top;
+    align-items: $left;
+}
+
+@mixin pos-center($typy) {
+    position: $typy;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin close-view-img($deg) {
+    width: 15px;
+    height: 2px;
+    background-color: white;
+    transform: rotate($deg);
+}
+
+%bar_style {
+    width: 28px;
+    height: 2px;
+    background-color: white;
+    transition: 0.5s;
+}
+
+%title_style {
+    color: var(--them-color);
+    font-size: 31px;
+    margin: 0;
+    letter-spacing: 1.1;
+    font-weight: bolder;
+    margin-bottom: 45px;
+}
+
+%div_style {
+    display: flex;
+    color: black;
+    padding: 70px var(--padding-nav) 50px var(--padding-nav);
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+input:focus{
+    outline: none;
+}
+
+@media only screen and (min-width: 1024px) {
+}
+
+@media only screen and (min-width: 1200px) {
+}

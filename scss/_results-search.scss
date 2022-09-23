@@ -1,0 +1,170 @@
+
+#search-results, #favourit-results{
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    padding: 10px;
+    margin-bottom: 35px;
+
+    h1{
+        font-size: 1.8em;
+    }
+
+    .not-found{
+        display: flex; 
+        justify-content: center;
+        h1{
+            color: #ff000078;
+            font-size: 1.2em;
+            padding: 13px 25px;
+            background-color: #ff000017;
+            border-radius: 6px;
+            font-weight: 500;
+            box-shadow: 0px 0px 53px 4px #ff000017;
+        }
+    }
+
+    #load{
+        display: flex; 
+        justify-content: center;
+        opacity: 0;
+        transition: opacity .5s;
+        span{
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            margin: 0 20px;
+            animation-name: load;
+            animation-iteration-count: infinite;
+            animation-duration: .8s;
+            animation-delay: unset;
+            border: 3px solid transparent;
+            border-top: 3px solid #f14668;
+            border-left: 3px solid #f14668;
+        }
+    }
+
+    .active{
+        opacity: 1 !important;
+    }
+
+    #contain_items{
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         opacity: 0;
+         transition: opacity .5s, transform 5s;
+        #items{
+            display: flex;
+            width: 95%;
+            padding: 10px;
+            padding-top: 20px;
+            text-align: left;
+            box-shadow: 0px 0px 20px 0px #c9c9c9;
+            margin-bottom: 20px;
+            animation-name: animeation_item_search;
+            animation-duration: 1s;
+            transition: margin .5s;
+            img{
+                max-height: 120px;
+                max-width: 80px;
+                margin-right: 10px;
+            }
+            #aitem-details{
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                div{
+                    display: block;
+                    margin-bottom: 10px;
+                    width: 100%;
+                    h2{
+                        color: #363636;
+                        font-size: 1.3em;
+                        font-weight: 500;
+                    }
+                    p{
+                        color: #252525;
+                        font-size: 1.2em;
+                        font-weight: 400;
+                        line-height: 1.6;
+                    }
+                }
+                div:nth-child(2){
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    i{
+                        font-size: 1.3em;
+                        padding: 10px;
+                        background-color: #feecf0;
+                        color: #f091a4;
+
+                        &:hover{
+                            color: #ce2d4d
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    #toggle_page{
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        
+        button:nth-child(2){
+            grid-column: 2/2;
+        }
+        button{
+            font-size: 1.1em;
+            padding: 10px 25px;
+            background-color: #f14668c9;
+            color: white;
+            border-radius: 5px;
+            transition: .5s;
+        
+            &:hover{
+                background-color: #f14063fd;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 750px) {
+
+    #search-results,#favourit-results{
+        padding: 10px 150px;
+    
+        #contain_items #items img{
+            max-height: 207px;
+            width: 178px;
+            max-width: 150px;
+        }
+    }   
+}
+
+@media only screen and (min-width: 1024px) {
+
+    #search-results,#favourit-results{
+        padding: 10px min(250px, 350px);
+
+        #contain_items #items #aitem-details div p{
+            width: 90%;
+        }
+    }   
+}
+
+@keyframes animeation_item_search {
+    0%   {opacity: 0; margin-top: 300px;}
+    100% {opacity: 1; margin-top: 0;}
+}
+
+@keyframes  load {
+    0%   {transform: rotate(0);}
+    100% {transform: rotate(360deg)}
+}
