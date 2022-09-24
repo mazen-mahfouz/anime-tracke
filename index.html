@@ -33,7 +33,7 @@
                 <my-result-search v-for="item in my_search" v-on:clicked_fav="newfavourit" :item="item"
                     :title="item.title" :about="item.synopsis" :img="item.images.jpg.image_url"></my-result-search>
             </div>
-            <div id="toggle_page" v-if="my_search.length !== 0">
+            <div id="toggle_page" v-if="my_search.length !== 0" :class="{active : my_search.length !== 0}">
                 <button v-show="count_page !== 1" @click.left="move_page(-1)">Back</button>
                 <button v-show="count_page !== all_count_pages" @click.left="move_page(1)">Next</button>
             </div>

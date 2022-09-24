@@ -587,7 +587,7 @@ input:focus {
 
 header {
   width: 100%;
-  padding: 40px 10px;
+  padding: 60px 10px;
   text-align: center;
 }
 
@@ -766,10 +766,16 @@ header div button:hover {
   color: #ce2d4d;
 }
 
+#search-results .active, #favourit-results .active {
+  transition: 0.5s;
+  opacity: 1 !important;
+}
+
 #search-results #toggle_page, #favourit-results #toggle_page {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
+  opacity: 0;
 }
 
 #search-results #toggle_page button:nth-child(2), #favourit-results #toggle_page button:nth-child(2) {

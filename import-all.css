@@ -35,7 +35,7 @@ input:focus {
 
 header {
   width: 100%;
-  padding: 40px 10px;
+  padding: 60px 10px;
   text-align: center;
 }
 header h1 {
@@ -184,10 +184,15 @@ header div button:hover {
 #search-results #contain_items #items #aitem-details div:nth-child(2) i:hover, #favourit-results #contain_items #items #aitem-details div:nth-child(2) i:hover {
   color: #ce2d4d;
 }
+#search-results .active, #favourit-results .active {
+  transition: 0.5s;
+  opacity: 1 !important;
+}
 #search-results #toggle_page, #favourit-results #toggle_page {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
+  opacity: 0;
 }
 #search-results #toggle_page button:nth-child(2), #favourit-results #toggle_page button:nth-child(2) {
   grid-column: 2/2;
